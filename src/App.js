@@ -2,13 +2,18 @@ import React, { useState } from 'react'
 import Game from './Game.js'
 import './App.css'
 
+
+
 const App = () => {
     const [showGame, updateShowGame] = useState(false)
+    const [playerChoiceId, updatePlayerChoiceId] = useState()
+    const [computerChoiceId, updateComputerChoiceId] = useState()
     const [objects, updateObjects] = useState(
         [
             {
                 id: 1,
-                name: 'kamen'
+                name: 'kamen',
+                beatsId: [2]
             },
             {
                 id: 2,
@@ -20,6 +25,22 @@ const App = () => {
             },
         ]
     )
+
+    const handleChoiceClick = (object) => {
+        updatePlayerChoiceId(object.id)
+        selectObject();
+    }
+
+    const selectObject = () => {
+        const selectedId = getRandomId(objects.length)
+        updateComputerChoiceId(objects[selectedId])
+    }
+
+    //generate random number between 1 and the number of choices
+    const getRandomId = (max) => {        
+        const roundedInteger =  Math.floor(Math.random() * max + 1)
+        return roundedInteger
+    }
 
     if (!showGame) {
         return (
@@ -34,9 +55,11 @@ const App = () => {
     }
     if (showGame) {
         return (
-            <Game objects={objects}/>
+            <Game objects={objects} handleChoiceClick={handleChoiceClick}/>
         )
     }
 }
 
+
 export default App
+
