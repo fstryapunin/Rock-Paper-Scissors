@@ -12,6 +12,7 @@ const ChoiceObject = ({ object, handleChoiceClick }) => {
         }
     }
 
+    //render object
     return (
         <div className={currentClass} onClick={() => {
             toggleClass();

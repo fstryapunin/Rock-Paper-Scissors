@@ -13,8 +13,8 @@ const Game = ({ objects, handleChoiceClick }) => {
         updatePlayerChoices(choices);
     }, [objects])
 
-    const handleObjectClick = () => {}
 
+    //render game
     return (
         <div className="game-container">
             <h2>Počítač</h2>
