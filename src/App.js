@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Game from './Game.js'
+import Result from './Result.js'
 import './App.css'
 
 
@@ -30,13 +31,10 @@ const App = () => {
         ]
     )
     
-    //judge the result of the game
+    //judge the result of the game then display it
     const judgeTheHand = () => {
         if (playerChoice && computerChoice) {
-            const didPlayerWin = playerChoice.beatsId.includes(computerChoice.id)
-
-            console.log('computer choice ' + computerChoice.name)
-            console.log('player choice ' + playerChoice.name)
+            const didPlayerWin = playerChoice.beatsId.includes(computerChoice.id)          
             if (didPlayerWin) { 
                 updateGameResult('Vyhrál jsi!')
             }
@@ -46,6 +44,7 @@ const App = () => {
             if (!didPlayerWin && playerChoice.id !== computerChoice.id) {
                 updateGameResult('Prohrál jsi!')
             }
+            toggleShowResult();
         }
     }
 
@@ -80,6 +79,11 @@ const App = () => {
         return roundedInteger
     }
 
+    const toggleShowResult = () => {
+        console.log('toggle')
+        updateShowResult(!showResult)
+    }
+
 
     //based on state either render main menu or game or the result of the game
     if (!showGame) {
@@ -101,6 +105,7 @@ const App = () => {
                     <button onClick={() => {
                         console.log(playerChoice)
                         console.log(computerChoice)
+                        console.log(showResult)
                     }
                     }>check state</button>
                 </div>
@@ -108,7 +113,7 @@ const App = () => {
         }
         if (showResult) {
             return (
-                <div></div>
+                <Result result={gameResult} toggleShowResult={toggleShowResult} playerChoice={playerChoice} computerChoice={computerChoice}/>
             )
         }
     }
