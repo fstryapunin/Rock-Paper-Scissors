@@ -9,25 +9,23 @@ const App = () => {
     const [showResult, updateShowResult] = useState(false)
     const [playerChoice, updatePlayerChoice] = useState()
     const [computerChoice, updateComputerChoice] = useState()
+    const [gameResult, updateGameResult] = useState('')
     const [objects, updateObjects] = useState(
         [
             {
                 id: 1,
                 name: 'kamen',
-                beatsId: [2],
-                isSelected: false
+                beatsId: [2]              
             },
             {
                 id: 2,
                 name: 'nuzky',
-                beatsId: [3],
-                isSelected: false
+                beatsId: [3]               
             },
             {
                 id: 3,
                 name: 'papir',
-                beatsId: [1],
-                isSelected: false
+                beatsId: [1]        
             },
         ]
     )
@@ -36,9 +34,18 @@ const App = () => {
     const judgeTheHand = () => {
         if (playerChoice && computerChoice) {
             const didPlayerWin = playerChoice.beatsId.includes(computerChoice.id)
+
             console.log('computer choice ' + computerChoice.name)
             console.log('player choice ' + playerChoice.name)
-            console.log(didPlayerWin)
+            if (didPlayerWin) { 
+                updateGameResult('Vyhrál jsi!')
+            }
+            if (!didPlayerWin && playerChoice.id === computerChoice.id) { 
+                updateGameResult('Remíza!')
+            }
+            if (!didPlayerWin && playerChoice.id !== computerChoice.id) {
+                updateGameResult('Prohrál jsi!')
+            }
         }
     }
 
@@ -49,7 +56,7 @@ const App = () => {
 
     
 
-    //store player choice object in state, trigger computer to choose an object
+    //store player choice object in state when player clicks on an object, trigger computer to choose an object
     const handleChoiceClick = (object) => {        
         updatePlayerChoice(object)
         selectObject();        
