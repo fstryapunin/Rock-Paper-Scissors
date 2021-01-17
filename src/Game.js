@@ -17,9 +17,10 @@ const Game = ({ objects, handleChoiceClick }) => {
 
     return (
         <div className="game-container">
-            
+            <h2>Počítač</h2>
             <div className="square">?</div>
             <div className="circle"></div>
+            <h2>Hráč</h2>
             <div className="selection-container">
                 {playerChoices}
             </div>          

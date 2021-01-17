@@ -20,6 +20,17 @@
     margin: 10px;
 }
 
+.square-selected{
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
 .selection-container{
     display: flex;
 }

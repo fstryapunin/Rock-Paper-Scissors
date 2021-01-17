@@ -32,13 +32,13 @@ const App = () => {
     }
 
     const selectObject = () => {
-        const selectedId = getRandomId(objects.length)
+        const selectedId = getRandomId(objects.length)      
         updateComputerChoiceId(objects[selectedId])
     }
 
     //generate random number between 1 and the number of choices
-    const getRandomId = (max) => {        
-        const roundedInteger =  Math.floor(Math.random() * max + 1)
+    const getRandomId = (max) => {      
+        const roundedInteger =  Math.floor((Math.random()*max) + 1); 
         return roundedInteger
     }
 
