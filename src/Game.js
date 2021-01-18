@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Object from './Object.js'
 import './Game.css'
 
 const Game = ({ objects, handleChoiceClick }) => {
-    const [playerChoices, updatePlayerChoices] = useState([]);
+    //generate objects for player to choose from props      
+    const choices = objects.map((object, index) => {            
+        return <Object object={object} handleChoiceClick={handleChoiceClick } />
+    });
     
-    //generate player choices on each change of choices props and update state  
-    useEffect(() => {        
-        const choices = objects.map((object, index) => {            
-            return <Object object={object} handleChoiceClick={handleChoiceClick } />
-        });        
-        updatePlayerChoices(choices);
-    }, [objects])
-
-
-    //render game
+    //render game and objects
     return (
         <div className="game-container">
             <h2>Počítač</h2>
@@ -22,7 +16,7 @@ const Game = ({ objects, handleChoiceClick }) => {
             <div className="circle"></div>
             <h2>Hráč</h2>
             <div className="selection-container">
-                {playerChoices}
+                {choices}
             </div>          
         </div>
     )

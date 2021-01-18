@@ -44,3 +44,46 @@
     margin-bottom: 25px;
 }
 
+.object-listing{
+    width:300px;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: black;
+    color:white;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-object-form{
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.object-form-item{
+    max-width: 320px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+input.object-form-item{
+    width: 310px;
+    height: 36px;
+    margin: 0;
+    padding: 5px
+}
+
+h3.object-form-item{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+

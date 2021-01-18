@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Game from './Game.js'
 import Result from './Result.js'
+import Options from './Options.js'
 import './App.css'
 
 
@@ -8,6 +9,7 @@ import './App.css'
 const App = () => {
     const [showGame, updateShowGame] = useState(false)
     const [showResult, updateShowResult] = useState(false)
+    const [showOptions, updateShowOptions] = useState(false)
     const [playerChoice, updatePlayerChoice] = useState()
     const [computerChoice, updateComputerChoice] = useState()
     const [gameResult, updateGameResult] = useState('')
@@ -26,6 +28,11 @@ const App = () => {
             {
                 id: 3,
                 name: 'papir',
+                beatsId: [1]        
+            },
+            {
+                id: 4,
+                name: 'studna',
                 beatsId: [1]        
             },
         ]
@@ -90,18 +97,33 @@ const App = () => {
     }
 
 
-    //based on state either render main menu or game or the result of the game
-    if (!showGame) {
+    //based on state either render main menu or game or the result of the game or options
+    if (!showGame && !showOptions) {
         return (
             <div className="main-view">
                 <h1>Kámen, nůžky, papír & jiné</h1>
                 <div>
                     <button onClick={() => { updateShowGame(true) }} className="main-view-button">Začít</button>
-                    <button className="main-view-button">Nastavení</button>
+                    <button onClick={() => { updateShowOptions(true)}}className="main-view-button">Nastavení</button>
                 </div>
             </div>
         )
     }
+
+
+    const removeObject = (object) => { 
+        const newObjects = objects.filter(obj => { 
+            return obj.id !== object.id
+        })
+        updateObjects(newObjects)
+    }
+
+    const addObject = (object) => {
+        console.log(object)
+        const newObjectList = objects.concat(object)
+        updateObjects(newObjectList)
+    }
+
     if (showGame) {
         if (!showResult) {
             return (
@@ -122,6 +144,14 @@ const App = () => {
                 <Result result={gameResult} toggleShowResult={toggleShowResult} playerChoice={playerChoice} computerChoice={computerChoice} resetChoices={resetChoices}/>
             )
         }
+    }
+    if (showOptions) { 
+        return (
+            <div>
+                 <button onClick={() => {updateShowOptions(false)}}className="exit-button">Zpět</button>
+                <Options objects={objects} removeObject={removeObject} addObject={addObject} />
+            </div>
+        )
     }
 }
 
