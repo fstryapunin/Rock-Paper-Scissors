@@ -29,12 +29,7 @@ const App = () => {
                 id: 3,
                 name: 'papir',
                 beatsId: [1]        
-            },
-            {
-                id: 4,
-                name: 'studna',
-                beatsId: [1]        
-            },
+            },            
         ]
     )
     
