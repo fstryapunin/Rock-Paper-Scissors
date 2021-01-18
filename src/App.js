@@ -123,12 +123,6 @@ const App = () => {
                 <div>
                     <Game objects={objects} handleChoiceClick={handleChoiceClick} />
                     <button onClick={() => {updateShowGame(false)}}className="exit-button">Zpět</button>
-                    <button onClick={() => {
-                        console.log(playerChoice)
-                        console.log(computerChoice)
-                        console.log(showResult)
-                    }
-                    }>check state</button>
                 </div>
             )
         }
