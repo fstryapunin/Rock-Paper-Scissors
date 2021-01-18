@@ -96,21 +96,6 @@ const App = () => {
         updateShowResult(!showResult)
     }
 
-
-    //based on state either render main menu or game or the result of the game or options
-    if (!showGame && !showOptions) {
-        return (
-            <div className="main-view">
-                <h1>Kámen, nůžky, papír & jiné</h1>
-                <div>
-                    <button onClick={() => { updateShowGame(true) }} className="main-view-button">Začít</button>
-                    <button onClick={() => { updateShowOptions(true)}}className="main-view-button">Nastavení</button>
-                </div>
-            </div>
-        )
-    }
-
-
     const removeObject = (object) => { 
         const newObjects = objects.filter(obj => { 
             return obj.id !== object.id
@@ -124,6 +109,19 @@ const App = () => {
         updateObjects(newObjectList)
     }
 
+
+    //based on state either render main menu or game or the result of the game or options
+    if (!showGame && !showOptions) {
+        return (
+            <div className="main-view">
+                <h1>Kámen, nůžky, papír & jiné</h1>
+                <div>
+                    <button onClick={() => { updateShowGame(true) }} className="main-view-button">Začít</button>
+                    <button onClick={() => { updateShowOptions(true)}}className="main-view-button">Nastavení</button>
+                </div>
+            </div>
+        )
+    }
     if (showGame) {
         if (!showResult) {
             return (
