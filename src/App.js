@@ -17,17 +17,17 @@ const App = () => {
         [
             {
                 id: 1,
-                name: 'kamen',
+                name: 'kámen',
                 beatsId: [2]              
             },
             {
                 id: 2,
-                name: 'nuzky',
+                name: 'nůžky',
                 beatsId: [3]               
             },
             {
                 id: 3,
-                name: 'papir',
+                name: 'papír',
                 beatsId: [1]        
             },            
         ]
