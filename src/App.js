@@ -79,8 +79,13 @@ const App = () => {
         return roundedInteger
     }
 
+    //reset state after display result
+    const resetChoices = () => {
+        updatePlayerChoice(null)
+        updateComputerChoice(null)
+    }
+
     const toggleShowResult = () => {
-        console.log('toggle')
         updateShowResult(!showResult)
     }
 
@@ -102,6 +107,7 @@ const App = () => {
             return (
                 <div>
                     <Game objects={objects} handleChoiceClick={handleChoiceClick} />
+                    <button onClick={() => {updateShowGame(false)}}className="exit-button">Zpět</button>
                     <button onClick={() => {
                         console.log(playerChoice)
                         console.log(computerChoice)
@@ -113,7 +119,7 @@ const App = () => {
         }
         if (showResult) {
             return (
-                <Result result={gameResult} toggleShowResult={toggleShowResult} playerChoice={playerChoice} computerChoice={computerChoice}/>
+                <Result result={gameResult} toggleShowResult={toggleShowResult} playerChoice={playerChoice} computerChoice={computerChoice} resetChoices={resetChoices}/>
             )
         }
     }
